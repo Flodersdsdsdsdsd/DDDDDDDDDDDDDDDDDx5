@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const prefix = ['-']
 
 client.on('ready', () => {
   console.log('======================================')
@@ -10,6 +11,9 @@ client.on('ready', () => {
   console.log(`Users! [ " ${client.users.size} " ]`);
   console.log('=======================================')
 });
+
+
+
 
 
 
@@ -27,23 +31,24 @@ client.on('message', message => {
 
 
 client.on('message', message => {
-    if(message.content === '^^ريب'){
+    if(message.content === '-ريب'){
         message.channel.send('#rep <@286088294234718209>')
-    }
-});
-  if(message.content == "<@" + `${client.user.id}` + ">"){
-client.on('message', message => {
-    if(message.content === "<@" + `${client.user.id}` + ">" + "تحويل"){
-        message.channel.send('#credit <@286088294234718209>')
     }
 });
 
 client.on('message', message => {
-if (message.content === "<@" + `${client.user.id}` + ">" + "سبام") {
+    if (message.content === "تحويل" + "<@" + `${client.user.id}` + ">") {
+        message.channel.send('#credit <@286088294234718209>')
+    }
+});
+
+
+client.on('message', message => {
+if (message.content === "سبام" + "<@" + `${client.user.id}` + ">") {
       let count = 0;
       let ecount = 0;
       for(let x = 0; x < 90000; x++) {
-        message.channel.send(`احبك انا ترا , سبام يولد ينعل ام الفلة hello Again ${x}`)
+        message.channel.send(`سبام يولد ينعل ام الفلة hello Again ${x}`)
           .then(m => {
             count++;
           })
@@ -51,8 +56,6 @@ if (message.content === "<@" + `${client.user.id}` + ">" + "سبام") {
         }
       }
 });
-
-const prefix = '-'
 
 client.on('message', message => {
   if (message.author.bot) return;
@@ -73,6 +76,12 @@ if (!rank) return message.reply(' ')
   }
 });
 
+
+client.on('guildCreate', (guild) => {
+    if(client.guilds.size > 2) {
+        guild.leave();
+    }
+})
 
 
 client.login(process.env.TOKEN);
